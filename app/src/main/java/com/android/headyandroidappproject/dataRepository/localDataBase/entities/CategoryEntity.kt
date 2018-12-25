@@ -1,4 +1,4 @@
-package com.android.headyandroidappproject.dataRepository.localDataBaseRepository.entities
+package com.android.headyandroidappproject.dataRepository.localDataBase.entities
 
 import android.arch.persistence.room.ColumnInfo
 import android.arch.persistence.room.Entity

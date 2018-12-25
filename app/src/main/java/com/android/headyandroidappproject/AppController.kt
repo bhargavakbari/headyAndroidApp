@@ -1,7 +1,6 @@
 package com.android.headyandroidappproject
 
 import android.app.Application
-import android.content.Context
 import com.android.headyandroidappproject.utility.Constants.Companion.BASE_URL
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

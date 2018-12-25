@@ -4,7 +4,7 @@ import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import android.util.Log
 import com.android.headyandroidappproject.dataRepository.networkDataRepository.dataProviders.ShoppingApiDataModel
-import com.android.headyandroidappproject.pojo.Category
+import com.android.headyandroidappproject.pojo.ShoppingData
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableObserver
@@ -16,7 +16,7 @@ class MainActivityViewModel : ViewModel {
     private val TAG = "MainActivityViewModel"
     private var compositeDisposable: CompositeDisposable
     private var mShoppingApiDataModel: ShoppingApiDataModel;
-    private var shoppingDataList: MutableLiveData<List<Category>> = MutableLiveData();
+    private var shoppingData: MutableLiveData<ShoppingData> = MutableLiveData();
 
     constructor() {
         mShoppingApiDataModel = ShoppingApiDataModel()
@@ -27,25 +27,26 @@ class MainActivityViewModel : ViewModel {
         val disposable = mShoppingApiDataModel.getAllShoppingDataList()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.newThread())
-                .subscribeWith(object : DisposableObserver<List<Category>>() {
+                .subscribeWith(object : DisposableObserver<ShoppingData>() {
                     override fun onComplete() {
 
                     }
 
-                    override fun onNext(shoppingDataResponse: List<Category>) {
+                    override fun onNext(shoppingDataResponse: ShoppingData) {
                         Log.d(TAG, "onNext() \n ${shoppingDataResponse}")
-                        shoppingDataList.value = shoppingDataResponse
+                        shoppingData.value = shoppingDataResponse
                     }
 
                     override fun onError(error: Throwable) {
                         Log.e(TAG, error.toString())
+                        shoppingData.value = null
                     }
                 })
         compositeDisposable.add(disposable);
     }
 
-    fun getShoppingLiveDataList(): MutableLiveData<List<Category>> {
-        return shoppingDataList
+    fun getShoppingLiveDataList(): MutableLiveData<ShoppingData> {
+        return shoppingData
     }
 
     override fun onCleared() {

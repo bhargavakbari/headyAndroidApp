@@ -12,6 +12,9 @@ interface ProductDAO {
     @Query("SELECT * FROM Product")
     fun getAllProduct(): LiveData<List<ProductEntity>>
 
+    @Query("SELECT * FROM Product where catId= :categoryId")
+    fun getAllProductForParticularCategory(categoryId: Int): LiveData<List<ProductEntity>>
+
     @Insert
     fun insertAllProduct(products: List<ProductEntity>)
 

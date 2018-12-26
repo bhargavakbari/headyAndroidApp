@@ -3,7 +3,7 @@ package com.android.headyandroidappproject.viewModels
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import android.util.Log
-import com.android.headyandroidappproject.dataRepository.networkDataRepository.dataProviders.ShoppingApiDataModel
+import com.android.headyandroidappproject.dataRepository.networkData.dataProviders.ShoppingApiDataModel
 import com.android.headyandroidappproject.pojo.ShoppingData
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable

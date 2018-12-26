@@ -12,6 +12,9 @@ interface VariantDAO {
     @Query("SELECT * FROM Variants")
     fun getAllVariants(): LiveData<List<VariantsEntity>>
 
+    @Query("SELECT * FROM Variants where productId = :prodId")
+    fun getAllVariantsForParticularProduct(prodId: Int): LiveData<List<VariantsEntity>>
+
     @Insert
     fun insertAllVariants(variants: List<VariantsEntity>)
 

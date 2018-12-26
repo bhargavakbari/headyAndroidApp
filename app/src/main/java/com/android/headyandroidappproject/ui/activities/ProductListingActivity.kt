@@ -3,10 +3,9 @@ package com.android.headyandroidappproject.ui.activities
 import android.arch.lifecycle.Observer
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.GridLayoutManager
 import android.util.Log
 import android.view.View
-import android.widget.LinearLayout
 import com.android.headyandroidappproject.R
 import com.android.headyandroidappproject.adapters.GenericAdapter
 import com.android.headyandroidappproject.dataRepository.localDataBase.dataBase.AppDataBase
@@ -61,7 +60,7 @@ class ProductListingActivity : AppCompatActivity(), RecyclerViewClickListener {
         productListingRecyclerView.addItemDecoration(SpacesItemDecoration(SpacesItemDecoration.CAT_TAG, SPACE))
         productListingRecyclerView.apply {
             setHasFixedSize(true)
-            layoutManager = LinearLayoutManager(context, LinearLayout.VERTICAL, false)
+            layoutManager = GridLayoutManager(context, 2)
         }
     }
 

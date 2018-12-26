@@ -11,11 +11,13 @@ class ProductItemViewHolder(view: View, val mContext: Context) : BaseViewHolder(
 
     var clickListener: RecyclerViewClickListener? = null
     var tvProductName = view.tvProductName
+    var viewVariantsBtn = view.viewVariantsBtn
     var productNameCardView = view.productNameCardView
     var productNameList = ArrayList<ProductEntity>()
 
     override fun initView() {
         productNameCardView.setOnClickListener { clickListener!!.onItemClicked(productNameCardView, adapterPosition, productNameList!![adapterPosition].productId) }
+        viewVariantsBtn.setOnClickListener { clickListener!!.onItemClicked(productNameCardView, adapterPosition, productNameList!![adapterPosition].productId) }
     }
 
     override fun initDataForRecyclerView(items: List<Any>) {

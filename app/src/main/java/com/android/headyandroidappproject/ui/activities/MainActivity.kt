@@ -11,10 +11,12 @@ import com.android.headyandroidappproject.dataRepository.localDataBase.Repositor
 import com.android.headyandroidappproject.dataRepository.localDataBase.dataBase.AppDataBase
 import com.android.headyandroidappproject.dataRepository.localDataBase.entities.*
 import com.android.headyandroidappproject.pojo.ShoppingData
+import com.android.headyandroidappproject.utility.IntentManager
 import com.android.headyandroidappproject.viewModels.MainActivityViewModel
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.progress_layout.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     private val TAG = "MainActivity"
     private lateinit var mViewModel: MainActivityViewModel
@@ -23,9 +25,25 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         mViewModel = ViewModelProviders.of(this).get(MainActivityViewModel::class.java)
-
+        categoryWiseProductCardView.setOnClickListener(this)
+        mostOrderedProductCardView.setOnClickListener(this)
+        mostViewProductCardView.setOnClickListener(this)
+        mostSharedProductCardView.setOnClickListener(this)
         observeShoppingListData()
     }
+
+    override fun onClick(view: View?) {
+        if (view == categoryWiseProductCardView) {
+            IntentManager.openCategoryListingActivity(this)
+        } else if (view == mostOrderedProductCardView) {
+
+        } else if (view == mostViewProductCardView) {
+
+        } else if (view == mostSharedProductCardView) {
+
+        }
+    }
+
 
     private fun observeShoppingListData() {
         showProgressBar()

@@ -3,15 +3,17 @@ package com.android.headyandroidappproject.ui.activities
 import android.arch.lifecycle.Observer
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.GridLayoutManager
+import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.View
+import android.widget.LinearLayout
 import com.android.headyandroidappproject.R
 import com.android.headyandroidappproject.adapters.GenericAdapter
 import com.android.headyandroidappproject.dataRepository.localDataBase.dataBase.AppDataBase
 import com.android.headyandroidappproject.dataRepository.localDataBase.entities.ProductEntity
 import com.android.headyandroidappproject.listener.RecyclerViewClickListener
 import com.android.headyandroidappproject.utility.Constants.IntentParameter.Companion.CAT_ID
+import com.android.headyandroidappproject.utility.IntentManager
 import com.android.headyandroidappproject.utility.SpacesItemDecoration
 import com.android.headyandroidappproject.viewHolders.ProductItemViewHolder
 import kotlinx.android.synthetic.main.activity_product_listing.*
@@ -47,9 +49,9 @@ class ProductListingActivity : AppCompatActivity(), RecyclerViewClickListener {
         mDb?.getProductDao()?.getAllProductForParticularCategory(catId)?.observe(this, productDataListObserver)
     }
 
-    private fun setAdapter(categoryDataList: List<ProductEntity>?) {
+    private fun setAdapter(productDataList: List<ProductEntity>?) {
         productListingRecyclerView?.let {
-            var adapter = GenericAdapter(categoryDataList as List<Any>, this, R.layout.item_product
+            var adapter = GenericAdapter(productDataList as List<Any>, this, R.layout.item_product
                     , ProductItemViewHolder::class.java.canonicalName, this)
             productListingRecyclerView?.adapter = adapter
         }
@@ -60,12 +62,12 @@ class ProductListingActivity : AppCompatActivity(), RecyclerViewClickListener {
         productListingRecyclerView.addItemDecoration(SpacesItemDecoration(SpacesItemDecoration.CAT_TAG, SPACE))
         productListingRecyclerView.apply {
             setHasFixedSize(true)
-            layoutManager = GridLayoutManager(context, 2)
+            layoutManager = LinearLayoutManager(context, LinearLayout.VERTICAL, false)
         }
     }
 
-    override fun onItemClicked(view: View, position: Int, any: Any) {
-
+    override fun onItemClicked(view: View, position: Int, productId: Any) {
+        IntentManager.openVariantListingActivity(this, productId as Int)
     }
 
     private fun showProgressBar() {

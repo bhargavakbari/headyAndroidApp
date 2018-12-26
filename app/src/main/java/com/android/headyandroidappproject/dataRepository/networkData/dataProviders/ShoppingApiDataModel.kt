@@ -1,8 +1,7 @@
-package com.android.headyandroidappproject.dataRepository.networkDataRepository.dataProviders
+package com.android.headyandroidappproject.dataRepository.networkData.dataProviders
 
 import com.android.headyandroidappproject.AppController
-import com.android.headyandroidappproject.dataRepository.networkDataRepository.apiProviders.ShoppingAPI
-import com.android.headyandroidappproject.pojo.Category
+import com.android.headyandroidappproject.dataRepository.networkData.apiProviders.ShoppingAPI
 import com.android.headyandroidappproject.pojo.ShoppingData
 import io.reactivex.Observable
 

@@ -9,6 +9,7 @@ class Constants {
     class IntentParameter {
         companion object {
             val CAT_ID = "cat_id"
+            val PRODUCT_ID = "product_id"
         }
     }
 

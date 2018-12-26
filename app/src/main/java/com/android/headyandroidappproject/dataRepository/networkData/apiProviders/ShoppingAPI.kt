@@ -1,4 +1,4 @@
-package com.android.headyandroidappproject.dataRepository.networkDataRepository.apiProviders
+package com.android.headyandroidappproject.dataRepository.networkData.apiProviders
 
 import com.android.headyandroidappproject.pojo.ShoppingData
 import io.reactivex.Observable

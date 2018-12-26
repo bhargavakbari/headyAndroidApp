@@ -12,6 +12,7 @@ import com.android.headyandroidappproject.adapters.GenericAdapter
 import com.android.headyandroidappproject.dataRepository.localDataBase.dataBase.AppDataBase
 import com.android.headyandroidappproject.dataRepository.localDataBase.entities.CategoryEntity
 import com.android.headyandroidappproject.listener.RecyclerViewClickListener
+import com.android.headyandroidappproject.utility.IntentManager
 import com.android.headyandroidappproject.utility.SpacesItemDecoration
 import com.android.headyandroidappproject.utility.SpacesItemDecoration.CAT_TAG
 import com.android.headyandroidappproject.viewHolders.CategoryItemViewHolder
@@ -59,8 +60,8 @@ class CategoryListingActivity : AppCompatActivity(), RecyclerViewClickListener {
         }
     }
 
-    override fun onItemClicked(view: View, position: Int, any: Any) {
-
+    override fun onItemClicked(view: View, position: Int, catId: Any) {
+        IntentManager.openProductListingActivity(this, catId as Int)
     }
 
     private fun showProgressBar() {

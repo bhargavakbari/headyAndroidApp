@@ -21,6 +21,7 @@
 
         <activity android:name=".ui.activities.CategoryListingActivity" />
         <activity android:name=".ui.activities.ProductListingActivity" />
+        <activity android:name=".ui.activities.VariantsActivity" />
     </application>
 
 </manifest>

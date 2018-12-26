@@ -6,4 +6,10 @@ class Constants {
         val BASE_URL = "https://stark-spire-93433.herokuapp.com"
     }
 
+    class IntentParameter {
+        companion object {
+            val CAT_ID = "cat_id"
+        }
+    }
+
 }

@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">HeadyAndroidAppProject</string>
+    <string name="most_ordered_product">most ordered Product</string>
+    <string name="cate_wise_product">category wise Product</string>
+    <string name="most_views_product">most viewed Product</string>
+    <string name="most_shared_product">most shared Product</string>
 </resources>
